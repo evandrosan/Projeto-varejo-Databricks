@@ -32,15 +32,15 @@ print("  - gold: Dados agregados para analise")
 
 # COMMAND ----------
 
-# Configuracoes do Spark
-spark.conf.set("spark.sql.adaptive.enabled", "true")
-spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+# Configuracoes Delta (opcionalas - podem nao estar disponiveis em todas as versoes)
+try:
+    spark.conf.set("spark.databricks.delta.optimizeWrite.enabled", "true")
+    spark.conf.set("spark.databricks.delta.autoCompact.enabled", "true")
+    print("OK - Configuracoes Delta aplicadas")
+except:
+    print("OK - Configuracoes Delta nao disponiveis (versao Community Edition)")
 
-# Configuracoes Delta
-spark.conf.set("spark.databricks.delta.optimizeWrite.enabled", "true")
-spark.conf.set("spark.databricks.delta.autoCompact.enabled", "true")
-
-print("OK - Configuracoes do Spark aplicadas")
+print("OK - Configuracao concluida")
 
 # COMMAND ----------
 
