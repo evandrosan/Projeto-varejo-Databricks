@@ -11,16 +11,6 @@ Analisar dados de vendas e inventario para:
 - Prever demandas futuras
 - Otimizar niveis de estoque
 
-## Estrutura do Projeto
-```
-notebooks/
-├── 00_config.py                    # Configuracoes e schemas
-├── 01_bronze_ingestao.py          # Bronze: Ingestao de dados brutos
-├── 02_silver_transformacao.py     # Silver: Limpeza e transformacao
-├── 03_gold_agregacao.py           # Gold: KPIs e agregacoes
-└── 04_visualizacao_dashboard.py   # Dashboard e visualizacoes
-```
-
 ## Arquitetura Medalhao
 - **Bronze**: Dados brutos sem transformacao (raw data)
 - **Silver**: Dados limpos, validados e enriquecidos
@@ -40,24 +30,7 @@ notebooks/
 4. **Produtos Top**: Mais vendidos por categoria
 5. **Margem de Lucro**: Rentabilidade por produto/categoria
 
-## Como Usar no Databricks
-
-### Passo 1: Importar do GitHub
-1. Acesse seu workspace Databricks
-2. Va em **Workspace** - **Users** - seu usuario
-3. Clique em **...** - **Import**
-4. Cole a URL: `https://github.com/evandrosan/Projeto-varejo-Databricks`
-5. Clique em **Import**
-
-### Passo 2: Criar um Cluster
-1. Va em **Compute** - **Create Cluster**
-2. Configure:
-   - **Cluster Name**: `cluster-varejo`
-   - **Databricks Runtime**: 13.3 LTS ou superior
-   - **Node Type**: Padrao (Community Edition)
-3. Aguarde o cluster ficar **Running** (verde)
-
-### Passo 3: Executar os Notebooks (na ordem)
+## Executar os Notebooks (na ordem)
 1. **00_config.py** - Configuracao inicial (databases e schemas)
 2. **01_bronze_ingestao.py** - Ingestao de dados brutos
 3. **02_silver_transformacao.py** - Limpeza e enriquecimento
