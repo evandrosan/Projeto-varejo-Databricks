@@ -95,18 +95,6 @@ notebooks/
 - Visualizacoes interativas
 - Insights acionaveis para gestao
 
-## Como Compartilhar
-1. Compartilhe o link do GitHub
-2. A pessoa segue os passos de importacao acima
-3. Pronto! Ela tera o projeto funcionando
-
-## Proximos Passos
-1. Criar Databricks SQL Dashboard
-2. Automatizar com Jobs
-3. Integrar dados reais (S3, APIs)
-4. Implementar ML para previsao de demanda
-5. Configurar alertas para estoque critico
-
 ## Requisitos
 - Conta Databricks (Community Edition ou superior)
 - Cluster com Databricks Runtime 13.0+
