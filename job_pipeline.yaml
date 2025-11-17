@@ -1,0 +1,35 @@
+resources:
+  jobs:
+    Pipeline_Varejo_Diario:
+      name: Pipeline Varejo - Diario
+      schedule:
+        quartz_cron_expression: 0 3/15 * * * ?
+        timezone_id: UTC
+        pause_status: PAUSED
+      tasks:
+        - task_key: 01_bronze_ingestao
+          notebook_task:
+            notebook_path: /Workspace/Users/evandrosan@gmail.com/Projeto-varejo-Databricks/notebooks/01_bronze_ingestao
+            source: WORKSPACE
+          environment_key: Default
+        - task_key: 02_silver_transformacao
+          depends_on:
+            - task_key: 01_bronze_ingestao
+          notebook_task:
+            notebook_path: /Workspace/Users/evandrosan@gmail.com/Projeto-varejo-Databricks/notebooks/02_silver_transformacao
+            source: WORKSPACE
+          environment_key: Default
+        - task_key: 03_gold_agregacao
+          depends_on:
+            - task_key: 02_silver_transformacao
+          notebook_task:
+            notebook_path: /Workspace/Users/evandrosan@gmail.com/Projeto-varejo-Databricks/notebooks/03_gold_agregacao
+            source: WORKSPACE
+          environment_key: Default
+      queue:
+        enabled: true
+      environments:
+        - environment_key: Default
+          spec:
+            environment_version: "4"
+      performance_target: PERFORMANCE_OPTIMIZED
